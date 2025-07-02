@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MailGPT — AI Email Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>MailGPT ✉️</h1>
+    <p>Write a command and let AI write the email for you.</p>
+    
+    <textarea id="commandInput" placeholder="e.g., Send email to branch manager about new recruitment policy"></textarea>
+    <button onclick="generateEmail()">Generate Email</button>
+
+    <div id="outputSection">
+      <h2>Generated Email:</h2>
+      <pre id="output"></pre>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
