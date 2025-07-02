@@ -16,7 +16,7 @@ async function generateEmail() {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-       "Authorization": "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -37,7 +37,12 @@ async function generateEmail() {
     });
 
     const data = await response.json();
-    output.innerText = data.choices[0].message.content.trim();
+
+    if (data.choices && data.choices.length > 0) {
+      output.innerText = data.choices[0].message.content.trim();
+    } else {
+      output.innerText = "❌ Error: No response from OpenAI.";
+    }
   } catch (err) {
     output.innerText = "❌ Error generating email. Please try again.";
     console.error(err);
