@@ -1,24 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MailGPT — AI Email Assistant</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>MailGPT ✉️</h1>
-    <p>Write a command and let AI write the email for you.</p>
-    
-    <textarea id="commandInput" placeholder="e.g., Send email to branch manager about new recruitment policy"></textarea>
-    <button onclick="generateEmail()">Generate Email</button>
+import React from "react";
 
-    <div id="outputSection">
-      <h2>Generated Email:</h2>
-      <pre id="output"></pre>
+// Holulu Clothing Brand Homepage (Dark theme + cylindrical styling)
+// Next.js + Tailwind CSS compatible
+
+export default function HoluluHomepage() {
+  const products = [
+    {
+      id: 1,
+      name: "Holulu Classic Tee",
+      price: "₹999",
+      img: "https://images.unsplash.com/photo-1520975918091-3f5f3b9f0f47?w=1200&q=80&auto=format&fit=crop",
+      tags: ["Unisex", "Cotton"]
+    },
+    {
+      id: 2,
+      name: "Holulu Oversized Tee",
+      price: "₹1,499",
+      img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=1200&q=80&auto=format&fit=crop",
+      tags: ["Streetwear", "Relaxed Fit"]
+    },
+    {
+      id: 3,
+      name: "Holulu Graphic Tee",
+      price: "₹1,299",
+      img: "https://images.unsplash.com/photo-1520975681917-05f6c7a4a6a6?w=1200&q=80&auto=format&fit=crop",
+      tags: ["Printed", "Casual"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-gray-200 font-sans">
+      {/* NAV */}
+      <header className="bg-black/90 border-b border-gray-800 sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <a className="text-3xl font-extrabold tracking-wide text-white">HOLULU</a>
+            <nav className="hidden md:flex gap-6 text-sm text-gray-400">
+              <a className="hover:text-white">Shop</a>
+              <a className="hover:text-white">About</a>
+              <a className="hover:text-white">Contact</a>
+            </nav>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button className="hidden md:inline-block text-sm px-3 py-2 border border-gray-700 rounded-full hover:bg-gray-800">Login</button>
+            <button className="text-sm px-3 py-2 bg-white text-black rounded-full font-medium">Cart (0)</button>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col items-center text-center">
+          <div className="w-full max-w-3xl p-12 bg-gradient-to-r from-gray-900 to-gray-800 rounded-[4rem] shadow-2xl">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
+              Streetwear. Reinvented.
+            </h1>
+            <p className="mt-6 text-gray-400 text-lg">
+              Minimalist designs. Premium fabrics. 100% made in India.
+            </p>
+            <div className="mt-8 flex gap-4 justify-center">
+              <a className="px-8 py-3 bg-white text-black rounded-full font-medium hover:scale-105 transition">Shop T-Shirts</a>
+              <a className="px-8 py-3 border border-gray-600 rounded-full font-medium hover:bg-gray-800 transition">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED T-SHIRTS */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-white mb-10 text-center">Our T-Shirts</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {products.map((p) => (
+            <div key={p.id} className="bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] overflow-hidden shadow-xl hover:shadow-2xl transition">
+              <div className="h-80 w-full overflow-hidden rounded-t-[3rem]">
+                <img src={p.img} alt={p.name} className="w-full h-full object-cover transform hover:scale-110 transition" />
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="font-semibold text-lg text-white">{p.name}</h3>
+                <span className="block mt-2 text-gray-400">{p.tags.join(" • ")}</span>
+                <span className="block mt-4 text-xl font-bold text-white">{p.price}</span>
+                <button className="mt-6 w-full px-4 py-3 bg-white text-black rounded-full font-medium hover:scale-105 transition">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BRAND STORY */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div className="p-10 bg-gradient-to-r from-gray-900 to-gray-800 rounded-[4rem] text-center shadow-2xl">
+          <h3 className="text-3xl font-bold text-white">The Holulu Story</h3>
+          <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
+            Holulu is about redefining basics. We craft T-shirts that merge everyday comfort with a bold, modern aesthetic.
+            Dark tones, clean lines, and fabrics that last.
+          </p>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-black border-t border-gray-800 mt-12">
+        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h4 className="font-bold text-white text-xl">HOLULU</h4>
+            <p className="mt-3 text-sm text-gray-500">Minimal streetwear — built for everyday confidence.</p>
+            <div className="mt-4 flex gap-3 text-sm text-gray-400">
+              <a className="hover:text-white">Instagram</a>
+              <a className="hover:text-white">Facebook</a>
+              <a className="hover:text-white">Twitter</a>
+            </div>
+          </div>
+
+          <div className="md:col-span-2 grid grid-cols-2 gap-6">
+            <div>
+              <h5 className="font-semibold text-white">Shop</h5>
+              <ul className="mt-3 text-sm text-gray-400 space-y-2">
+                <li>T-Shirts</li>
+                <li>New Arrivals</li>
+                <li>Best Sellers</li>
+              </ul>
+            </div>
+
+            <div>
+              <h5 className="font-semibold text-white">Help</h5>
+              <ul className="mt-3 text-sm text-gray-400 space-y-2">
+                <li>Shipping</li>
+                <li>Returns</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-black py-4 text-center text-sm text-gray-600 border-t border-gray-800">
+          ©️ {new Date().getFullYear()} HOLULU — All rights reserved
+        </div>
+      </footer>
     </div>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
+  );
+}
